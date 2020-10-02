@@ -1,0 +1,67 @@
+<html>
+	<head>
+		<title>Review up until this point</title>
+		<style>
+			p.normal_text {
+				color: blue;
+			}
+			
+			p#superDuperSpecial {
+				color: red;
+			}
+		</style>
+		
+		<link rel="stylesheet" href="review_style.css" type="text/css" />
+	</head>
+	<body>
+
+		<h1>Review thus far!</h1>
+		
+		<p class="normal_text" style="">This is text</p>
+		<p class="normal_text" id="superDuperSpecial">This is text</p>
+		<p class="normal_text">This is text</p>
+
+		<img src="" />
+		
+		<button id="special_button">
+			Click here for awesomeness
+		</button>
+		
+		<script>
+			var buttonReference = document.getElementById("special_button");
+			buttonReference.innerText = "Boo!";
+			
+			buttonReference.addEventListener("mouseover", moused)
+		
+			var is_it_hot_in_here = true;
+			var room_name = 'Anderson 404';
+			var room_number = 421;
+			var students = ["student1", true, 98];
+			var teacher = {
+				name: "Brock",
+				age: 33,
+				kids: ["Carson", "Ansleigh"],
+				is_boring: true
+			}
+			
+			//students[2];
+			//teacher.age;
+			
+			function greetTheTeach(teacher) {
+				console.log("Yo waddup " + teacher); 
+				
+				return "Yo waddup " + teacher;
+			}
+			
+			var answer = prompt("Do you agree?");
+			
+			var greeting1 = greetTheTeach("Brock");
+			greetTheTeach("Other teacher");
+			
+			function moused() {
+				console.log("Moused over the button!");
+			}
+		</script>
+
+	</body>
+</html>

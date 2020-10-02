@@ -1,0 +1,138 @@
+<html>
+	<head>
+		<title>New contents!</title>
+		<style>
+			img {
+				width: 50px;
+			}
+			
+			div#output {
+				width: 600px;
+				height: 200px;
+				background-color: #FFF8E7;
+				overflow-y: scroll;
+			}
+		</style>
+	</head>
+	<body>
+	
+		<h1>Topics for learnin'</h1>
+		<ul>
+			<li>Inline Javascript</li>
+			<li>Outputting Messages X</li> 
+			<li>Methods and "this"</li>
+			<li>Loot Chance X</li>
+			<li>Local Storage</li>
+			<li>Dynamic images X</li>
+			<li>RPS Game dynamic</li>
+		</ul>
+		
+		<img src="" />
+		<button>Display Random Image</button>
+		
+		<button id="dropSystem">Test Drop Systsem</button>
+		
+		<div id="output"></div>
+		
+		<script>
+			// DYNAMIC IMAGES
+			var images = [
+				{
+					name: "Kansas City Chiefs",
+					image: "https://chiefswire.usatoday.com/wp-content/uploads/sites/70/2020/09/bb0339b4d3e64998bbe649eb3b449bfd.jpg?w=1000&h=600&crop=1"
+				},
+				{
+					name: "Nebraska Cornhuskers",
+					image: "https://athlonsports.com/sites/athlonsports.com/files/styles/article_top_img/public/Nebraska_Cornhuskers_team_entrance_2015_19.jpg?itok=OdxQJ7jM"
+				},
+				{
+					name: "Team Liquid",
+					image: "https://cdn.vox-cdn.com/thumbor/3Ei1nkBF7TZLajb6q4_ksLXmpb8=/0x0:2048x1367/1200x800/filters:focal(861x521:1187x847)/cdn.vox-cdn.com/uploads/chorus_image/image/65239226/48615972667_fff12da932_k.0.jpg"
+				}
+			];
+			
+			var imgTag = document.querySelectorAll("img")[0];
+			var buttonTag = document.querySelector("button");
+			
+			buttonTag.addEventListener("click", pickRandomImage);
+			
+			function pickRandomImage() {
+				// 1 create random number between 0 and number of images
+				// 2 get URL of the image from the object
+				// 3 update the "src" attribute of the imgTag object to 
+				// 	the URL you just saved
+				// 4 profit
+				
+				var randomNumber = Math.floor( Math.random() * images.length );
+			
+				var imageUrl = images[randomNumber].image;
+				
+				imgTag.src = imageUrl;
+			}
+			
+			// LOOT CHANCE
+			var dropSystemButton = document.querySelector("#dropSystem");
+			dropSystemButton.addEventListener("click", testDropSystem);
+			
+			var items = [
+				{
+					name: "Small Potion",
+					chance: 0.30
+				},
+				{
+					name: "Medium potion",
+					chance: 0.12
+				},
+				{
+					name: "Large potion",
+					chance: 0.03
+				}
+			];
+			
+			function testDropSystem() {
+				// 1. find a random number between 0 and 1
+				// 2. find all of the items that CAN be found 
+				// 		by comparing the random number to their "chance"
+				// 3. put all possible items into a new array
+				// 4. select a random item from that array of possibilities
+			
+				var dropRandomNumber = Math.random();
+				console.log("Testing here", dropRandomNumber);
+				
+				var findableItems = [];
+				items.forEach(function(item){
+					console.log("In a loop!", item);
+					
+					if(item.chance > dropRandomNumber) {
+						console.log("Item can be found!");
+						findableItems.push(item);
+					}
+					
+				});
+				
+				// at this point, findableItems should be populated
+				// with all of the items that could be found
+				// now we just need to grab one of them
+				if(findableItems.length == 0){
+					console.log("No items dropped");
+				} else {
+					var randomItemNumber = Math.floor(Math.random() * findableItems.length);
+					console.log(findableItems[randomItemNumber]);
+				}	
+			}
+			
+			// Outputting Messages
+			// 1 get reference to div element
+			// 2 create function that accepts a message variable
+			// 3 prepend message, wrapped in a <p>, to div's
+			//		innerHTML property
+			var outputDiv = document.getElementById("output");
+			
+			function createOutput(message) {
+				outputDiv.innerHTML = "<p>" + message + "</p>" + outputDiv.innerHTML;
+			}
+			
+		</script>
+
+	</body>
+</html>
